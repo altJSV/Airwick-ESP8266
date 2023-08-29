@@ -1,0 +1,88 @@
+{
+ "configs": [
+  "/config.live.json"
+ ],
+ "title": [
+  {
+   "type": "text",
+   "class": "text-info",
+   "title": "Главная"
+  }
+ ],
+"class": "col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6",
+ "content": [
+  {
+   "type": "h5",
+   "title": "{{SSDP}}",
+   "class":"alert-warning",
+   "style": "font-size:10px;width:100%"
+  },
+{
+   "type": "hr"
+  },
+  {
+   "type": "link",
+   "title": "Конфигурация",
+   "action": "/index.htm?setup",
+   "class": "btn btn-block btn-danger"
+  },
+ {
+   "type": "link",
+   "title": "Настройки MQTT",
+   "action": "/index.htm?mqtt",
+   "class": "btn btn-block btn-info"
+  },
+  {
+   "type": "hr"
+  },
+ {
+   "type": "h2",
+  "style":"font-size:30px;display:block",
+  "title":" Настройка таймеров"
+  },
+  {
+   "type": "range",
+   "name": "pretimer",
+   "title": "Предварительный таймер (мин) {{pretimer}}",
+   "state": "{{pretimer}}",
+   "pattern": "min=1 max=60 step=1",
+   "action": "set_pretimer?val=[[pretimer]]"
+  },
+  {
+   "type": "range",
+   "name": "intervaltimer",
+   "title": "Таймер срабатывания (мин) {{interval}}",
+   "state": "{{interval}}",
+   "pattern": "min=1 max=10 step=1",
+   "action": "set_maintimer?val=[[intervaltimer]]"
+  },
+   {
+    "type": "button",
+    "title": "Сохранить",
+    "action": "setTimers?pretimer=[[pretimer]]&interval=[[intervaltimer]]",
+    "class": "btn btn-block btn-success",
+    "style": "width:100%;display:inline"
+   },
+ {
+   "type": "hr"
+  },
+{
+   "type": "h2",
+   "title": "Датчик света - {{A0}}",
+ "style":"font-size:20px"
+  },
+  {
+   "type": "hr"
+  },
+{
+  "type": "button",
+   "title": "Распылить",
+   "action": "/motor",
+   "class": " btn-info",
+   "style": "width:100%;float:left;display:block"
+  },
+{
+   "type": "hr"
+  }
+ ]
+}

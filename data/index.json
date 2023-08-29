@@ -67,10 +67,10 @@
    "type": "hr"
   },
 {
-   "type": "h2",
-   "title": "Датчик света - {{A0}}",
- "style":"font-size:20px"
-  },
+"type": "chart",
+"title": "Датчик света - ",
+"state": "analog.json"
+},
   {
    "type": "hr"
   },

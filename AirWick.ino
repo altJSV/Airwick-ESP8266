@@ -29,7 +29,7 @@ unsigned long timerStartTime = 0;  // Время старта таймера и�
 unsigned long timerDuration = 240000;  // Длительность таймера (120 секунд)
 unsigned long preTimer = 60000;  // Длительность таймера (60 секунд)
 bool workmode=false; // флаг запуска таймера режима распыления
-bool sleep=false;
+
 
 String configSetup = "{}";
 String configJson = "{}";
@@ -133,7 +133,7 @@ pinMode(lightSensorPin, INPUT);
   // Подключение к MQTT-серверу
   client.setServer(mqttServer.c_str(), mqttPort);
   client.setCallback(mqttCallback);
-  
+  GRAF_init();
 }
 
 void loop() {

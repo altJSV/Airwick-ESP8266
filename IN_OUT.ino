@@ -5,3 +5,10 @@ void outData(){
     jsonWrite(configJson, "interval", timerDuration/60000); 
     jsonWrite(configJson, "pretimer", preTimer/60000);
   }
+
+void GRAF_init() {
+  HTTP.on("/analog.json", HTTP_GET, []() {
+    String data = graf(analogRead(A0),20,10000);
+    HTTP.send(200, "application/json", data);
+  });
+}

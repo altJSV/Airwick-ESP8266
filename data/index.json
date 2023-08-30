@@ -9,15 +9,15 @@
    "title": "Главная"
   }
  ],
-"class": "col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6",
+ "class": "col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6",
  "content": [
   {
    "type": "h5",
    "title": "{{SSDP}}",
-   "class":"alert-warning",
+   "class": "alert-warning",
    "style": "font-size:10px;width:100%"
   },
-{
+  {
    "type": "hr"
   },
   {
@@ -26,7 +26,7 @@
    "action": "/index.htm?setup",
    "class": "btn btn-block btn-danger"
   },
- {
+  {
    "type": "link",
    "title": "Настройки MQTT",
    "action": "/index.htm?mqtt",
@@ -35,53 +35,65 @@
   {
    "type": "hr"
   },
- {
+  {
    "type": "h2",
-  "style":"font-size:30px;display:block",
-  "title":" Настройка таймеров"
+   "style": "font-size:30px;display:block",
+   "title": " Настройка таймеров"
   },
   {
    "type": "range",
    "name": "pretimer",
-   "title": "Предварительный таймер (мин) {{preTimer}}",
+   "title": "Предварительный таймер ({{preTimer}} мин)",
    "state": "{{preTimer}}",
-   "pattern": "min=1 max=60 step=1",
-   "action": "set_pretimer?val=[[pretimer]]"
+   "pattern": "min=1 max=10 step=1"
   },
   {
    "type": "range",
    "name": "intervaltimer",
-   "title": "Таймер срабатывания (мин) {{Interval}}",
+   "title": "Таймер срабатывания ({{Interval}} мин)",
    "state": "{{Interval}}",
-   "pattern": "min=1 max=10 step=1",
-   "action": "set_maintimer?val=[[intervaltimer]]"
+   "pattern": "min=1 max=60 step=1"
   },
-   {
-    "type": "button",
-    "title": "Сохранить",
-    "action": "setTimers?pretimer=[[pretimer]]&interval=[[intervaltimer]]",
-    "class": "btn btn-block btn-success",
-    "style": "width:100%;display:inline"
-   },
- {
-   "type": "hr"
+  {
+   "type": "button",
+   "title": "Сохранить",
+   "action": "setTimers?pretimer=[[pretimer]]&interval=[[intervaltimer]]",
+   "class": "btn btn-block btn-success",
+   "style": "width:100%;display:inline"
   },
-{
-"type": "chart",
-"title": "Датчик света - ",
-"state": "analog.json"
-},
   {
    "type": "hr"
   },
-{
-  "type": "button",
+  {
+   "type": "chart",
+   "title": "Датчик света - ",
+   "state": "analog.json"
+  },
+  {
+   "type": "range",
+   "name": "lightTreshold",
+   "title": "Порог срабатывания датчика света ({{lightTreshold}})",
+   "state": "{{lightTreshold}}",
+   "pattern": "min=10 max=1000 step=10"
+  },
+ {
+   "type": "button",
+   "title": "Сохранить",
+   "action": "set_lightTreshold?val=[[lightTreshold]]",
+   "class": "btn btn-block btn-success",
+   "style": "width:100%;display:inline"
+  },
+  {
+   "type": "hr"
+  },
+  {
+   "type": "button",
    "title": "Распылить",
    "action": "/motor",
    "class": " btn-info",
-   "style": "width:100%;float:left;display:block"
+   "style": "width:100%;display:inline"
   },
-{
+  {
    "type": "hr"
   }
  ]

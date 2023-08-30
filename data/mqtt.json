@@ -108,11 +108,37 @@
   {
    "type": "hr"
   }, 
+{
+   "type": "h3",
+   "title": "Настройки MQTT топиков"
+  },
+{
+   "type": "h4",
+   "title": "Топик для команд"
+  },
+  {
+   "type": "input",
+   "title": "Топик для команд",
+   "name": "mq_cmd",
+   "state": "{{mq_cmd}}",
+   "pattern": "[0-9a-zA-Z.\\_ ]{1,31}"
+  }, 
+{
+   "type": "h4",
+   "title": "Топик для команд"
+  },
+  {
+   "type": "input",
+   "title": "Топик для статусных сообщений",
+   "name": "mq_status",
+   "state": "{{mq_status}}",
+   "pattern": "[0-9a-zA-Z.\\_ ]{1,31}"
+  }, 
   {
    "type": "button",
    "title": "Сохранить",
    "class": "btn btn-block btn-success",
-   "action": "mqtt_save?mq_on=[[mq_on]]&mq_ip=[[mq_ip]]&mq_port=[[mq_port]]&mq_ssid=[[mq_ssid]]&mq_pass=[[mq_pass]]&mq_id=[[mq_id]]"
+   "action": "mqtt_save?mq_on=[[mq_on]]&mq_ip=[[mq_ip]]&mq_port=[[mq_port]]&mq_ssid=[[mq_ssid]]&mq_pass=[[mq_pass]]&mq_id=[[mq_id]]&mq_cmd=[[mq_cmd]]&mq_status=[[mq_status]]"
   },
   {
    "type": "hr"

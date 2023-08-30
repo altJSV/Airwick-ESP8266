@@ -37,6 +37,10 @@ void HTTP_init(void) {
   HTTP.on("/motor", []() {
     // Включаем мотор на 1 секунду
     Serial.println("Кнопка нажата в веб интерфейсе");
+    if (client.connected()) //Отправка в топик сообщения об уровне освещения
+    {
+    client.publish(statusTopic.c_str(),"Распыляем освежитель по нажатию кнопки в веб интерфейсе");
+    }
     digitalWrite(motorPin, HIGH);
     delay(1000);
     digitalWrite(motorPin, LOW);

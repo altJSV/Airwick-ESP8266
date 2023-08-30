@@ -153,6 +153,7 @@ unsigned long currentTime = millis();
   if (currentTime - previousTime >= interval) {
     previousTime = currentTime;
     int lightLevel = analogRead(lightSensorPin);
+    /*
     Serial.println(lightLevel);
     if (client.connected()) //Отправка в топик сообщения об уровне освещения
     {
@@ -160,6 +161,7 @@ unsigned long currentTime = millis();
     sprintf(msg,"Уровень освещения: %d",lightLevel);
     client.publish(statusTopic.c_str(),msg);
     }
+    */
     if (lightLevel > 500) {
       // Если свет горит, запускаем предварительный таймер
       if (pretimerStartTime == 0 && workmode==false) {

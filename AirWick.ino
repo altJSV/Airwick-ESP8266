@@ -163,6 +163,7 @@ unsigned long currentTime = millis();
 
 if (buttonState == LOW) {
   // Кнопка нажата, запустить мотор на 1 секунду
+  Serial.println("Кнопка нажата");
   digitalWrite(motorPin, HIGH);
   delay(1000);
   digitalWrite(motorPin, LOW);

@@ -36,6 +36,7 @@ void HTTP_init(void) {
   // Добавляем обработчик для кнопки
   HTTP.on("/motor", []() {
     // Включаем мотор на 1 секунду
+    Serial.println("Кнопка нажата в веб интерфейсе");
     digitalWrite(motorPin, HIGH);
     delay(1000);
     digitalWrite(motorPin, LOW);

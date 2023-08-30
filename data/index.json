@@ -1,6 +1,6 @@
 {
  "configs": [
-  "/config.live.json"
+  "/config.setup.json"
  ],
  "title": [
   {
@@ -43,16 +43,16 @@
   {
    "type": "range",
    "name": "pretimer",
-   "title": "Предварительный таймер (мин) {{pretimer}}",
-   "state": "{{pretimer}}",
+   "title": "Предварительный таймер (мин) {{preTimer}}",
+   "state": "{{preTimer}}",
    "pattern": "min=1 max=60 step=1",
    "action": "set_pretimer?val=[[pretimer]]"
   },
   {
    "type": "range",
    "name": "intervaltimer",
-   "title": "Таймер срабатывания (мин) {{interval}}",
-   "state": "{{interval}}",
+   "title": "Таймер срабатывания (мин) {{Interval}}",
+   "state": "{{Interval}}",
    "pattern": "min=1 max=10 step=1",
    "action": "set_maintimer?val=[[intervaltimer]]"
   },

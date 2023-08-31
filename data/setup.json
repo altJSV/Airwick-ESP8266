@@ -1,16 +1,16 @@
 {
  "configs": [
-    "/config.live.json",
-   "/config.setup.json",
-   "/lang/lang.ru.json"
+  "/config.live.json",
+  "/config.setup.json",
+  "/lang/lang.ru.json"
  ],
  "title": "Конфигурация",
- "class":"col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6",
+ "class": "col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6",
  "content": [
   {
    "type": "h5",
    "title": "{{SSDP}}",
-   "class":"alert-warning",
+   "class": "alert-warning",
    "style": "font-size:10px;width:100%"
   },
   {
@@ -19,7 +19,7 @@
    "action": "/",
    "class": "btn btn-block btn-danger"
   },
-{
+  {
    "type": "link",
    "title": "Настройки MQTT",
    "action": "/index.htm?mqtt",
@@ -35,7 +35,7 @@
   {
    "type": "input",
    "title": "Имя устройства",
-   "name":"ssdp",
+   "name": "ssdp",
    "state": "{{SSDP}}",
    "pattern": "[0-9a-zA-Zа-яА-Я.\\- ]{1,20}"
   },
@@ -54,15 +54,15 @@
   },
   {
    "type": "input",
-   "title":"Сеть",
-   "name":"ssid",
+   "title": "Сеть",
+   "name": "ssid",
    "state": "{{ssid}}",
    "pattern": "[0-9a-zA-Zа-яА-Я.\\- ]{1,20}"
   },
   {
    "type": "password",
    "title": "Введите пароль",
-   "name":"ssidPass",
+   "name": "ssidPass",
    "state": "{{password}}",
    "pattern": ".{8,20}"
   },
@@ -82,13 +82,13 @@
   {
    "type": "input",
    "title": "{{LangSpace}}",
-   "name":"timeZone",
+   "name": "timeZone",
    "state": "{{timezone}}",
    "pattern": "[0-9-]{1,3}"
   },
   {
    "type": "button",
-   "module":"",
+   "module": "",
    "title": "Сохранить",
    "class": "btn btn-block btn-success",
    "action": "timeZone?timeZone=[[timeZone]]"
@@ -101,9 +101,9 @@
   },
   {
    "type": "time",
-   "name":"times1",
+   "name": "times1",
    "title": "На устройстве сейчас",
-   "state":"{{time}}"
+   "state": "{{time}}"
   },
   {
    "type": "link",
@@ -127,7 +127,7 @@
   {
    "type": "input",
    "title": "Имя WI-FI сети",
-   "name":"ssidap",
+   "name": "ssidap",
    "state": "{{ssidAP}}",
    "style": "width:50%;display:inline",
    "pattern": ".{1,20}"
@@ -135,7 +135,7 @@
   {
    "type": "password",
    "title": "Пароль",
-   "name":"ssidApPass",
+   "name": "ssidApPass",
    "state": "{{passwordAP}}",
    "style": "width:50%;display:inline",
    "pattern": ".{8,20}"
@@ -150,16 +150,41 @@
   {
    "type": "hr"
   },
+  {
+   "type": "h2",
+   "title": "Настройки энергосбережения"
+  },
 {
+"type": "text",
+"title": "Внимание!!! Включение данного режима позволит управлять устройством только по MQTT протоколу! Для отключения отправьте команду в cmdTopic lowpow 0",
+"style": "color:red;display:block; font-size:16px"
+},
+{
+"type": "checkbox",
+"name":"lowpwr",
+"title": "Включить режим энергосбережения",
+"state": "0"
+},
+{
+   "type": "button",
+   "module": "",
+   "title": "Сохранить",
+   "class": "btn btn-block btn-success",
+   "action": "lowpwr?val=[[lowpwr]]"
+  },
+{
+"type":"hr"
+},
+  {
    "type": "link",
    "title": "Редактор",
-  "action": "/edit",
+   "action": "/edit",
    "class": "btn btn-block btn-warning"
   },
   {
    "type": "link",
    "title": "Обновление ПО",
-  "action": "/update",
+   "action": "/update",
    "class": "btn btn-block btn-info"
   },
   {

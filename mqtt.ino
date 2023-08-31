@@ -43,7 +43,14 @@
                       sprintf(msg,"Основной таймер установлен на: %d мин",param);
                       client.publish(statusTopic.c_str(),msg);
                     }
-    }     
+    }
+    if (command=="lowpwr"){ if (param>=0 && param<2){
+                      lowPower=param;
+                      jsonWrite(configSetup, "lowPWR", param); // сохраняем в json
+                      saveConfig();
+                      if (lowPower){client.publish(statusTopic.c_str(),"Включен энергосберегающий режим");}else{client.publish(statusTopic.c_str(),"Отключен энергосберегающий режим");}
+                    }
+    }      
     }
 
   void connectToMqtt() {

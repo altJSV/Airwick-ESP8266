@@ -45,7 +45,7 @@ String cmdTopic = "/motor";
 String statusTopic = "/status";
 String clientID = "ESP8266Client-";  //id клиента
 bool useMQTT = true;                 //флаг использования mqtt
-
+bool lowPower = false;
 WiFiClient espClient;
 PubSubClient client(espClient);
 
@@ -58,7 +58,13 @@ void handle_set_lightTreshold() {
   HTTP.send(200, "text/plain", "OK");
 }
 
- 
+// Установка значения энергосберегающего режима  http://192.168.0.101/lowpwr?val=1
+void handle_lowpower() {
+  lowPower=HTTP.arg("val").toInt();// Получаем значение порога освещения для включения таймеров
+  jsonWrite(configSetup, "lowPWR", lowPower); // сохраняем в json
+  saveConfig();
+  HTTP.send(200, "text/plain", "OK");
+} 
 
   void setup() {
     Serial.begin(115200);
@@ -79,6 +85,7 @@ void handle_set_lightTreshold() {
     Serial.println(configSetup);
     //чтение порогового значения датчика света
     lightTreshold = jsonReadtoInt(configSetup, "lightTreshold");
+    lowPower = jsonReadtoInt(configSetup, "lowPWR");
     if (lightTreshold==0) lightTreshold=600; 
     //Запускаем WIFI
     WIFIinit();

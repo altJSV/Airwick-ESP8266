@@ -44,7 +44,7 @@
                       client.publish(statusTopic.c_str(),msg);
                     }
     }
-    if (command=="lowpwr"){ 
+    if (command=="lowpw"){ 
                       if (param>=0 && param<2)
                       {
                       lowPower=param;

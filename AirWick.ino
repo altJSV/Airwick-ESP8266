@@ -188,7 +188,7 @@ void handle_lowpower() {
     //переходим в режим низкого энергопотребления
     if (lowPower && lightLevel<lightTreshold && timerStartTime==0){
       Serial.println("Go to Sleep!!!");
-      ESP.deepSleep(10e6);
+      ESP.deepSleep(20e6);
       }
     
   }

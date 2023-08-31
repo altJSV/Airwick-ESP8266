@@ -20,6 +20,13 @@
   {
    "type": "hr"
   },
+ {
+   "type": "button",
+   "title": "Распылить",
+   "action": "/motor",
+   "class": " btn btn-block btn-success",
+   "style": "width:100%;display:inline"
+  },
   {
    "type": "link",
    "title": "Конфигурация",
@@ -81,16 +88,6 @@
    "title": "Сохранить",
    "action": "set_lightTreshold?val=[[lightTreshold]]",
    "class": "btn btn-block btn-success",
-   "style": "width:100%;display:inline"
-  },
-  {
-   "type": "hr"
-  },
-  {
-   "type": "button",
-   "title": "Распылить",
-   "action": "/motor",
-   "class": " btn-info",
    "style": "width:100%;display:inline"
   },
   {

@@ -22,6 +22,12 @@
    "type": "link",
    "title": "Главная",
    "action": "/",
+   "class": "btn btn-block btn-info"
+  },
+{
+   "type": "link",
+   "title": "Конфигурация",
+   "action": "/index.htm?setup",
    "class": "btn btn-block btn-danger"
   },
   {

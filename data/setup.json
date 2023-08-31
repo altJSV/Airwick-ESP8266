@@ -19,6 +19,12 @@
    "action": "/",
    "class": "btn btn-block btn-danger"
   },
+{
+   "type": "link",
+   "title": "Настройки MQTT",
+   "action": "/index.htm?mqtt",
+   "class": "btn btn-block btn-info"
+  },
   {
    "type": "hr"
   },

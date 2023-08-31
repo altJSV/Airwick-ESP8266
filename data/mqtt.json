@@ -38,7 +38,7 @@
    "class": "checkbox-big",
    "name": "mq_on",
    "title": "Использовать MQTT клиент",
-   "style": "font-size:20px; display:block",
+   "style": "font-size:18px; display:block",
    "state": "{{mq_on}}"
   },
   {

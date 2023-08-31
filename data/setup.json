@@ -163,7 +163,25 @@
 "type": "checkbox",
 "name":"lowpwr",
 "title": "Включить режим энергосбережения",
-"state": "0"
+"state": "{{lowPWR}}"
+},
+{
+"type": "h4",
+"title": "Выбор режима энергосбережения:",
+"style": "display:block; font-size:16px"
+},
+{
+"type": "select",
+"state": "0",
+"title": {"0":"Modem Sleep","1":"Deep Sleep"},
+"style": "width:50%; height:50px; display:inline"
+},
+{
+"type": "text",
+"title": "<b>Modem Sleep</b> - отключается только WiFi<br><b>Deep Sleep</b> - полностью отключаются все функции. Пробуждение по таймеру",
+"style": "display:block; font-size:16px",
+"class": "alert alert-warning",
+   "style": "width:45%;float:right;"
 },
 {
    "type": "button",

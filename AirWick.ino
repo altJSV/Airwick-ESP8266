@@ -21,7 +21,6 @@ const int lightSensorPin = A0;  // Пин, к которому подключе�
 const int motorPin = D2;        // Пин, к которому подключен мотор
 const int buttonPin = D3;       // Пин, к которому подключена кнопка
 
-
 unsigned long previousTime = 0;        // Предыдущее время опроса датчика
 const unsigned long interval = 10000;  // Интервал опроса датчика (10 секунд)
 
@@ -31,7 +30,7 @@ unsigned long timerDuration = 240000;  // Длительность таймер�
 unsigned long preTimer = 60000;        // Длительность таймера (60 секунд)
 uint16_t lightTreshold = 600;          //порог срабатывания датчика света
 bool workmode = false;                 // флаг запуска таймера режима распыления
-
+int lightLevel;                        //Уровень освещения
 
 String configSetup = "{}";
 String configJson = "{}";
@@ -45,7 +44,8 @@ String cmdTopic = "/motor";
 String statusTopic = "/status";
 String clientID = "ESP8266Client-";  //id клиента
 bool useMQTT = true;                 //флаг использования mqtt
-bool lowPower = false;
+bool lowPower = false;              //режим низкого энергопотребления
+
 WiFiClient espClient;
 PubSubClient client(espClient);
 
@@ -58,11 +58,16 @@ void handle_set_lightTreshold() {
   HTTP.send(200, "text/plain", "OK");
 }
 
-// Установка значения энергосберегающего режима  http://192.168.0.101/lowpwr?val=1
+// Установка значения энергосберегающего режима  http://192.168.0.101/lowpwr?onoff=1&mode=0
 void handle_lowpower() {
-  lowPower=HTTP.arg("val").toInt();// Получаем значение порога освещения для включения таймеров
+  lowPower=HTTP.arg("onoff").toInt();// включение и отключение режима
   jsonWrite(configSetup, "lowPWR", lowPower); // сохраняем в json
   saveConfig();
+  if (client.connected()){
+    if (lowPower){client.publish(statusTopic.c_str(),"Включен энергосберегающий режим");} 
+    else{client.publish(statusTopic.c_str(),"Отключен энергосберегающий режим");}
+    
+  }
   HTTP.send(200, "text/plain", "OK");
 } 
 
@@ -99,6 +104,7 @@ void handle_lowpower() {
     init_mqtt();
     //Инициализация построения графика
     GRAF_init();
+    lightLevel = analogRead(lightSensorPin);
   }
 
   void loop() {
@@ -106,12 +112,13 @@ void handle_lowpower() {
     delay(1);
     unsigned long currentTime = millis();
 
-    // Опрос датчика каждый заданный интервал секунд
+        // Опрос датчика каждый заданный интервал секунд
     if (currentTime - previousTime >= interval) {
       previousTime = currentTime;
-      int lightLevel = analogRead(lightSensorPin);
-      
-    Serial.println(lightLevel);
+      lightLevel = analogRead(lightSensorPin);
+      Serial.println(lightLevel);
+     
+    
     /*if (client.connected()) //Отправка в топик сообщения об уровне освещения
     {
     char msg[80];
@@ -178,4 +185,10 @@ void handle_lowpower() {
       connectToMqtt();
     }
     client.loop();
+    //переходим в режим низкого энергопотребления
+    if (lowPower && lightLevel<lightTreshold && timerStartTime==0){
+      Serial.println("Go to Sleep!!!");
+      ESP.deepSleep(10e6);
+      }
+    
   }

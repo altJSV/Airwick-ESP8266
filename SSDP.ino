@@ -25,6 +25,6 @@ void SSDP_init(void) {
   
   SSDP.setModelURL("https://github.com/altJSV");
   SSDP.setManufacturer("ProjectALT");
-  SSDP.setManufacturerURL("https://github.com/altJSV");
+  SSDP.setManufacturerURL("https://projectalt.ru");
   SSDP.begin();
 }
